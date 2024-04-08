@@ -59,9 +59,7 @@ class APIResponse
         $response = Response::make(
             $this->wrap($content, $status, $message),
             $status,
-            array_merge([
-                'X-WRAPPED-BY' => sprintf('%s/%s', basename(self::class), self::version),
-            ], $headers));
+            $headers);
 
         if ($status >= 200 && $status < 400):
             return $response;
